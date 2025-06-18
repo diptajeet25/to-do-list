@@ -2,14 +2,23 @@ let array = [];
 let add = document.getElementById("add");
 let save = document.getElementById("save");
 let container = document.getElementById("container");
-let output = document.getElementById("output");
-
+let msg = document.getElementById("msg");
+let output=document.getElementById("output");
 add.style.backgroundColor = "blue";
 
 add.addEventListener("click", addItem);
 save.addEventListener("click", saveItems);
 
 function addItem() {
+    let inputs=document.getElementsByClassName("input");
+let lastInput = inputs[inputs.length - 1];
+    if(lastInput.value=="")
+    {
+
+    msg.innerHTML="Please Fill The Previous One.";
+    return false;
+    }
+    msg.innerHTML="";
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Enter a new item";
@@ -25,6 +34,16 @@ function addItem() {
 }
 
 function saveItems() {
+        let inputs1=document.getElementsByClassName("input");
+let lastInput = inputs1[inputs1.length - 1];
+    if(lastInput.value=="")
+    {
+
+    msg.innerHTML="Please Fill all Fields Before Submit";
+    return false;
+    }
+    msg.innerHTML="";
+
     let inputs = document.querySelectorAll(".input");
     array = [];
 
@@ -33,26 +52,6 @@ function saveItems() {
             array.push(inputs[i].value.trim());
         }
     }
-
-    output.innerHTML = '';
-    output.innerHTML = '<h2 style="color:black">Saved Tasks:</h2>';
-
-    for (let i = 0; i < array.length; i++) {
-        let item = document.createElement("p");
-        item.textContent = array[i];
-        output.appendChild(item);
-    }
-
-    output.style.backgroundColor = "yellow";
-    output.style.padding = "10px";
-    output.style.borderRadius = "5px";
-    output.style.marginTop = "20px";
-    output.style.marginLeft = "780px";
-    output.style.marginBottom = "200px";
-    output.style.fontFamily = "Arial, sans-serif";
-    output.style.fontSize = "26px";
-    output.style.color = "darkblue";
-    output.style.textAlign = "center";
-    output.style.border = "1px solid black";
-    output.style.width = "500px";
+     localStorage.setItem("savedTasks", JSON.stringify(array));
+    window.location.href="result.html";
 }

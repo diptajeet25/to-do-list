@@ -40,7 +40,7 @@
     width: 50%;
     height: 50px;
     background-color: #4CAF50;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px;
     text-align: center;
     margin-left: 26.2%;
@@ -69,4 +69,17 @@
 body
 {
     background-color: rgb(214, 243, 250);
+}
+#msg
+{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: rgb(254, 71, 71);
+    font-weight: bold;
+}
+#boro
+{
+    display: flex;
+    flex-direction: column;
 }
